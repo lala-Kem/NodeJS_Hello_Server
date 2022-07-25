@@ -29,6 +29,16 @@ app.get("/users/:id", function (req, res) {
     res.send(result);
 });
 
+app.get("/users/delete/:id", function (req, res) {
+    const { id } = req.params;
+    console.log(id);
+    const result =
+        id > users.length
+            ? "User does not exist!"
+            : users.splice(users.indexOf(id), 1);
+    res.send(result);
+});
+
 app.listen(port, () => {
     console.log(`Example app listening to port: ${port}`);
 });
