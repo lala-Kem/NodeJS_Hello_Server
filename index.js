@@ -22,6 +22,13 @@ app.get("/users", function (req, res) {
     res.send(users);
 });
 
+app.get("/users/:id", function (req, res) {
+    const { id } = req.params;
+    console.log(id);
+    const result = id > users.length ? "User does not exist!" : users[id];
+    res.send(result);
+});
+
 app.listen(port, () => {
     console.log(`Example app listening to port: ${port}`);
 });
